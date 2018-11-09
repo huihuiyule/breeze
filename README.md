@@ -12,10 +12,22 @@ Breeze - Deploy Kubernetes Cluster with Web UI
 Note:
 1. **请不要把Breeze所在的部署主机加入部署集群主机列表**
 2. **为了避免包冲突，请使用纯净的CentOS Minimal安装出来的OS来部署集群**
+3. **如果不是全新安装部署而是升级，请在部署机上先删除旧版本的卷数据**
+     ```
+     docker volume ls
+     docker volume rm 卷名
+     ```
+4. **当前版本的CA证书是动态生成的，有效期为100年，其它服务证书有效期为50年。**
+5. **本安装方式通过了Kubernetes Conformance一致性认证，因此可用于生产环境。**
+
+常见排错说明在此：
+https://github.com/wise2c-devops/breeze/blob/master/TroubleShooting.md
 
 **PDF手册请在此处下载：**
 
 https://github.com/wise2c-devops/breeze/raw/master/manual/BreezeManual.pdf
+
+**大家搜索关注微信公众号【Wise2C】后回复【进群】，睿云小助手会第一时间把拉你进入【 Docker企业落地实践群】，关于Breeze部署工具的问题以及建议我们在群里讨论！**
 
 **软件架构示意图**
 ![Alt](./manual/Wise2C-Breeze-Architecture.png)
@@ -60,7 +72,7 @@ systemctl enable docker
 例如：
 
 ```
-curl -L https://raw.githubusercontent.com/wise2c-devops/breeze/v1.12.1/docker-compose.yml -o docker-compose.yml
+curl -L https://raw.githubusercontent.com/wise2c-devops/breeze/v1.12.2/docker-compose.yml -o docker-compose.yml
 ```
 
 ```
